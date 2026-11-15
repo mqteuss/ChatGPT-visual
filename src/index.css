@@ -1,0 +1,245 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  color-scheme: light dark;
+
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    "Helvetica", "Arial", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", "Menlo", "Monaco", "Consolas",
+    "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+
+  --cubic-enter: cubic-bezier(0.19, 1, 0.22, 1);
+  --cubic-exit: cubic-bezier(0.8, 0, 0.4, 1);
+  --cubic-move: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --gray-0: #ffffff;
+  --gray-25: #fcfcfc;
+  --gray-50: #f9f9f9;
+  --gray-75: #f3f3f3;
+  --gray-100: #ededed;
+  --gray-150: #dfdfdf;
+  --gray-200: #cdcdcd;
+  --gray-300: #afafaf;
+  --gray-400: #8f8f8f;
+  --gray-500: #5d5d5d;
+  --gray-600: #414141;
+  --gray-700: #303030;
+  --gray-800: #212121;
+  --gray-900: #181818;
+  --gray-950: #131313;
+  --gray-1000: #0d0d0d;
+
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f9f9f9;
+  --color-surface-tertiary: #f3f3f3;
+  --color-surface-elevated: #ffffff;
+  --color-code-bg: #fcfcfc;
+
+  --color-text: #0d0d0d;
+  --color-text-secondary: #5d5d5d;
+  --color-text-tertiary: #8f8f8f;
+  --color-text-inverse: #ffffff;
+
+  --color-border-subtle: rgb(13 13 13 / 5%);
+  --color-border: rgb(13 13 13 / 10%);
+  --color-border-outline: rgb(13 13 13 / 16%);
+  --color-border-strong: rgb(13 13 13 / 22%);
+  --color-focus-border: rgb(13 13 13 / 50%);
+
+  --color-soft-bg: rgb(13 13 13 / 6%);
+  --color-soft-bg-hover: rgb(13 13 13 / 10%);
+  --color-soft-bg-active: rgb(13 13 13 / 14%);
+
+  --color-solid-bg: #181818;
+  --color-solid-bg-hover: #303030;
+  --color-solid-text: #ffffff;
+
+  --color-track-bg: #ededed;
+  --color-thumb-bg: #ffffff;
+
+  --color-ring: #0169cc;
+  --shadow-hairline: 0 0 0 1px rgb(0 0 0 / 8%);
+  --shadow-popover: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --shadow-thumb: 0 1px 4px -1px rgb(0 0 0 / 20%);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-surface: #212121;
+  --color-surface-secondary: #181818;
+  --color-surface-tertiary: #131313;
+  --color-surface-elevated: #303030;
+  --color-code-bg: #161616;
+
+  --color-text: #ffffff;
+  --color-text-secondary: #afafaf;
+  --color-text-tertiary: #8f8f8f;
+  --color-text-inverse: #0d0d0d;
+
+  --color-border-subtle: rgb(255 255 255 / 6%);
+  --color-border: rgb(255 255 255 / 12%);
+  --color-border-outline: rgb(255 255 255 / 22%);
+  --color-border-strong: rgb(255 255 255 / 30%);
+  --color-focus-border: rgb(255 255 255 / 50%);
+
+  --color-soft-bg: rgb(255 255 255 / 10%);
+  --color-soft-bg-hover: rgb(255 255 255 / 15%);
+  --color-soft-bg-active: rgb(255 255 255 / 20%);
+
+  --color-solid-bg: #f3f3f3;
+  --color-solid-bg-hover: #dcdcdc;
+  --color-solid-text: #0d0d0d;
+
+  --color-track-bg: #131313;
+  --color-thumb-bg: #303030;
+
+  --color-ring: #0285ff;
+  --shadow-hairline: 0 0 0 1px rgb(255 255 255 / 10%);
+  --shadow-popover: 0 10px 15px -3px rgb(0 0 0 / 36%), 0 4px 6px -4px rgb(0 0 0 / 28%);
+  --shadow-thumb: 0 1px 4px -1px rgb(0 0 0 / 45%);
+}
+
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  }
+
+  code,
+  pre,
+  kbd {
+    font-family: var(--font-mono);
+  }
+
+  ::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  * {
+    scrollbar-color: rgb(13 13 13 / 25%) transparent;
+    scrollbar-width: thin;
+  }
+
+  [data-theme="dark"] * {
+    scrollbar-color: rgb(255 255 255 / 25%) transparent;
+  }
+}
+
+:root {
+  --cubic-exit-snappy: cubic-bezier(0.65, 0, 0.4, 1);
+  --shimmer-highlight: #cdcdcd;
+}
+
+[data-theme="dark"] {
+  --shimmer-highlight: #ffffff;
+}
+
+@keyframes cg-shimmer {
+  0% {
+    background-position: -100% top;
+  }
+  70%,
+  100% {
+    background-position: 250% top;
+  }
+}
+
+@keyframes cg-pulse-dot {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  20% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes cg-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes cg-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes cg-popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cg-shimmer-text {
+  display: inline-block;
+  background: currentColor
+    linear-gradient(to left, currentColor, var(--shimmer-highlight) 50%, currentColor);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 50% 200%;
+  background-position: -100% top;
+  background-repeat: no-repeat;
+  -webkit-text-fill-color: transparent;
+  animation: cg-shimmer 3s infinite 0.6s;
+}
+
+.cg-shimmer-text[data-idle="true"] {
+  animation: none;
+  background: none;
+  background-clip: unset;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+.cg-dot {
+  animation: cg-pulse-dot 1s infinite both;
+}
+
+.cg-spinner {
+  animation: cg-rotate 0.8s linear infinite;
+}
+
+.cg-shake {
+  animation: cg-shake 0.4s ease;
+}
+
+.cg-popover-enter {
+  animation: cg-popover-in 0.35s var(--cubic-enter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
